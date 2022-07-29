@@ -3,26 +3,34 @@
 
   <%= form_for :session, url: login_path do |f| %>
     <% if flash[:login_error] %>
-      <p><%= flash[:login_error] %></p>
+      <div class="rounded-lg bg-red-200 text-center mx-auto my-5 p-2 w-128 ">
+        <p style='color:red'><%= flash[:login_error] %></p>
+      </div>
     <% end %>
-    <p>
-      <%= f.label t('user.name') %>
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label t('user.password') %>
-      <%= f.password_field :password %>
-    </p>
-    <div class="w-48 mx-auto mt-5 border-2 px-5 py-2 rounded-lg border-rose-400 border-b-4 font-black translate-y-2 border-l-4 bg-rose-400 text-white text-center hover:bg-mybg hover:text-rose-400">
-      <p><%= f.button t('user.login') %></p>
-    </div>
+
+    <table class="border border-4 border-slate-500">
+      <tr>
+        <td class="pl-20 pt-10 pb-2"><%= t('user.name') %></td>
+        <td class="p-20 pt-10 pb-2"><%= f.text_field :name %> <br /></td>
+      </tr>
+      <tr>
+        <td class="pl-20 pt-10 pb-2"><%= t('user.password') %></td>
+        <td class="p-20 pt-10 pb-2"><%= f.password_field :password %> <br /></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="pb-10">
+          <div class="w-48 mx-auto mt-5">
+            <%= f.submit t('user.login'), class: "w-48 border-2 px-5 py-2 rounded-lg border-rose-400 border-b-4 font-black translate-y-2 border-l-4 bg-rose-400 text-white text-center hover:bg-mybg hover:text-rose-400" %>
+          </div>
+        </td>
+      </tr>
+    </table>
   <% end %>
 
   <div class="mt-5 px-5 py-2">
     <%= t('user.new_user') %>
-    <span class="underline decoration-sky-500"><%= link_to t('user.signup_now'), signup_path %></span>
+    <%= link_to t('user.signup_now'), signup_path, class: "underline decoration-sky-500" %>
 	</div>
-  <div class="mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 bg-black text-white hover:bg-mybg hover:text-black">
-		<%= link_to t('index.return'), root_path %>
-	</div>
+  	<%= link_to t('index.return'), root_path, class: "mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 bg-black text-white hover:bg-mybg hover:text-black" %>
 </div>
+

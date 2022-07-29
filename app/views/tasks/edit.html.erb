@@ -3,7 +3,5 @@
 
 	<%= render "form", url: { action: 'update', controller: 'tasks' } %>
 
-  <div class="mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 bg-black text-white hover:bg-mybg hover:text-black">
-		<%= link_to t('form.back_to_task_list'), root_path %>
-	</div>
+	<%= link_to t('form.back_to_task_list'), root_path, class: "mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 bg-black text-white hover:bg-mybg hover:text-black" %>
 </div>

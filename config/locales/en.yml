@@ -56,8 +56,11 @@ en:
     have_account: "Already have an account?"
     login_now: "Login now!"
     tasks_number: "Tasks Number"
+    identity: "Identity"
+    admin: "Admin"
+    general: "General"
   admin:
-    title: "User Management"
+    title: "Admin"
     create_user: "Create User"
     show_tasks: "Show Tasks"
   index:
@@ -87,3 +90,4 @@ en:
     you_have_been_logged_out: 'You have been logged out!'
     signup_successfully: "Sign up successfully!"
     can_not_delete_current_user: "Can't delete current user!"
+    user_not_admin: "User is not administrator!"

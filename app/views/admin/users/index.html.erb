@@ -1,16 +1,12 @@
 <div>
-  <span class="mt-5 mr-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 bg-black text-white hover:bg-mybg hover:text-black">
-    <%= link_to t('form.back_to_task_list'), root_path, method: 'delete' %>
-  </span>
+  <%= link_to t('form.back_to_task_list'), root_path, method: 'delete', class: "mt-5 mr-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 bg-black text-white hover:bg-mybg hover:text-black" %>
 </div>
 
 <div class="flex flex-col justify-center items-center">
 	<h1 class="mb-8 text-5xl font-extrabold font-mono"><%= t('admin.title') %></h1>
 
 	<div class="flex m-8">
-		<div class="px-5 py-2 mr-5 border-2 border-rose-400 bg-white text-rose-400 font-bold hover:bg-rose-400 hover:text-white">
-			<%= link_to t('admin.create_user'), new_admin_user_path %>
-		</div>
+		<%= link_to t('admin.create_user'), new_admin_user_path, class: "px-5 py-2 mr-5 border-2 border-rose-400 bg-white text-rose-400 font-bold hover:bg-rose-400 hover:text-white" %>
 	</div>
 
 	<% if flash[:notice] %>
@@ -23,6 +19,7 @@
 		<thead>
 			<tr class="text-white h-12">
 				<th class="bg-slate-500 px-3 w-36"><%= t('user.name') %></th>
+				<th class="bg-slate-500 px-3 w-36"><%= t('user.identity') %></th>
 				<th class="bg-slate-500 px-3 w-36"><%= t('user.tasks_number') %></th>
 				<th colspan="3" class="bg-slate-500 px-3 w-36"><%= t('index.operate') %></th>
 			</tr>
@@ -32,21 +29,16 @@
 			<% @users.each_with_index do |user, index| %>
 				<tr id = <%= index %>  class="h-12 border border-2 border-black">
 					<td class='title'><%= user.name %></td>
+					<td class='created_at'><%= t("user.#{user.admin}") %></td>
 					<td class='created_at'><%= user.tasks.count %></td>
 					<td>
-            <div class="bg-sky-400 text-white rounded-full p-2 hover:bg-sky-600">
-              <%= link_to t('admin.show_tasks'), tasks_path(user) %>
-            </div>
+            <%= link_to t('admin.show_tasks'), tasks_path(user), class: "bg-sky-400 text-white rounded-full px-3 py-3 hover:bg-sky-600" %>
           </td>
 					<td>
-            <div class="bg-rose-400 text-white rounded-full p-2 hover:bg-rose-500">
-              <%= link_to t('index.edit'), edit_admin_user_path(user) %>
-            </div>
+            <%= link_to t('index.edit'), edit_admin_user_path(user), class: "bg-rose-400 text-white rounded-full px-3 py-3 hover:bg-rose-500" %>
           </td>
 					<td>
-						<div class="bg-slate-500 text-white rounded-full p-2 hover:bg-slate-600">
-							<%= link_to t('index.delete'), admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-						</div>
+						<%= link_to t('index.delete'), admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "bg-slate-500 text-white rounded-full px-3 py-3 hover:bg-slate-600" %>
 					</td>
 				</tr>
 			<% end %>
